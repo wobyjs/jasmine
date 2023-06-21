@@ -41,7 +41,7 @@
         "target": "es2020",
         "useDefineForClassFields": false,
         "useUnknownInCatchVariables": true,
-        "noImplicitAny": false,
+        "noImplicitAny": true,
         "noUncheckedIndexedAccess": false,
         "baseUrl": ".",
         "rootDir": "./",

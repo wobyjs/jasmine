@@ -30,48 +30,71 @@ export const jest = {
     clearAllMocks: () => { }
 }
 
-export function mockSetInterval() {
-    spyOn(globalThis, 'setInterval')
-}
+// export function mockSetInterval() {
+//     spyOn(globalThis, 'setInterval')
+// }
 
-export function mockClearInterval() {
-    spyOn(globalThis, 'clearInterval')
-}
+// export function mockClearInterval() {
+//     spyOn(globalThis, 'clearInterval')
+// }
 
-const ftick = (setSpyFunction: ReturnType<typeof spyOn>, clearSpyFunction: ReturnType<typeof spyOn>, fn?: () => void) => (ms: number) => {
-    const setSpyCalls = setSpyFunction.calls
-    const clearSpyCalls = clearSpyFunction.calls
-    if (!setSpyCalls.any()) {
-        return
-    }
+// const ftick = (setSpyFunction: jasmine.Spy,
+//     clearSpyFunction: jasmine.Spy,
+//     dateSpyFunction: jasmine.Spy,
+//     now: {current: number},
+//     fn?: (id: number) => void) => (ms: number) => {
+//         const setSpyCalls = setSpyFunction.calls
+//         const clearSpyCalls = clearSpyFunction.calls
+//         //ftick must tick both in ms and date format, 
+//         const dateTick = (ms: number) => { 
+//             const i = now.current = now.current + ms 
+//             dateSpyFunction.and.returnValues(i, i+1, i+2, i+3, i+4, i+5) 
+//         }
 
-    const callback = setSpyCalls.mostRecent().args[0] as Function
-    const milli = setSpyCalls.mostRecent().args[1] as number
-    const dispose = clearSpyCalls.all().some(id => //checks whether the timeout id is removed
-        setSpyCalls.mostRecent().returnValue as any === id.args[0]
-    )
-    if (!dispose) {
-        if (ms >= milli) {
-            for (let i = 0; i < ms / milli; i++) {
-                callback()
-            }
-            fn?.()
-        }
-    }
-}
-export function installInterval() {
-    const setSpy = spyOn(globalThis, 'setInterval').and.returnValues(Math.floor(Math.random() * 1000) as any, Math.floor(Math.random() * 1000) as any)
-    const clearSpy = spyOn(globalThis, 'clearInterval')
-    const tick = ftick(setSpy, clearSpy)
-    return { tick }
-}
-export function installTimeout() {
-    const setSpy = spyOn(globalThis, 'setTimeout').and.returnValues(Math.floor(Math.random() * 1000) as any, Math.floor(Math.random() * 1000) as any)
-    const clearSpy = spyOn(globalThis, 'clearTimeout')
-    const tick = ftick(setSpy, clearSpy, () => globalThis.clearTimeout(setSpy.calls.mostRecent().returnValue)
-    )
-    return { tick }
-}
+//         if (!setSpyCalls.any()) {
+//             return
+//         }   
+//         const callback = setSpyCalls.all().map(c => c.args[0] as Function)
+//         callback.forEach((c)=>{if(!c.startTime){c.startTime=now.current}})
+
+//         const milli = setSpyCalls.all().map(ms => ms.args[1] as number)
+//         const dispose = clearSpyCalls.all().map(id => //checks whether the timeout id is removed
+//             setSpyCalls.all().some(s => s.returnValue as any === id.args[0])
+//         )
+//         callback.forEach((c, i) => {
+//             if (!dispose[i]) {
+//                 if ((now.current - c.startTime ) >= milli[i] ) {
+//                     for (let i = 0; i < ms / milli[i]; i++) {
+//                         callback[i]()
+//                     }
+//                     if(fn){
+//                         fn(setSpyCalls.all()[i].returnValue)
+//                     }
+//                 }
+//                 else{
+//                    now.current += ms
+//                 }
+//             }
+//         })
+//         dateTick(ms)
+
+//     }
+// export function installInterval() {
+//     const setSpy = spyOn(globalThis, 'setInterval').and.returnValues(Math.floor(Math.random() * 1000) as any, Math.floor(Math.random() * 1000) as any, Math.floor(Math.random() * 1000) as any, Math.floor(Math.random() * 1000) as any, Math.floor(Math.random() * 1000) as any, Math.floor(Math.random() * 1000) as any, Math.floor(Math.random() * 1000) as any, Math.floor(Math.random() * 1000) as any)
+//     const clearSpy = spyOn(globalThis, 'clearInterval')
+//     let now = {current: Date.now()} 
+//     const dateSpy = spyOn(Date, 'now').and.returnValues(now.current, now.current+1, now.current+2, now.current+3, now.current+4)
+//     const tick = ftick(setSpy, clearSpy, dateSpy, now)
+//     return { tick }
+// }
+// export function installTimeout() {
+//     const setSpy = spyOn(globalThis, 'setTimeout').and.returnValues(Math.floor(Math.random() * 1000) as any, Math.floor(Math.random() * 1000) as any, Math.floor(Math.random() * 1000) as any, Math.floor(Math.random() * 1000) as any, Math.floor(Math.random() * 1000) as any, Math.floor(Math.random() * 1000) as any, Math.floor(Math.random() * 1000) as any, Math.floor(Math.random() * 1000) as any)
+//     const clearSpy = spyOn(globalThis, 'clearTimeout')
+//     let now = {current: Date.now()} 
+//     const dateSpy = spyOn(Date, 'now').and.returnValues(now.current, now.current+1, now.current+2, now.current+3, now.current+4)
+//     const tick = ftick(setSpy, clearSpy, dateSpy, now, () => globalThis.clearTimeout)
+//     return { tick }
+// }
 
 export const fireEvent = {
     click: <T extends HTMLElement>(e: T) => {

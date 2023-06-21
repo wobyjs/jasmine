@@ -6,7 +6,8 @@
   "module": "./dist/jasmine.es.js",
   "types": "./dist/types/jasmine.d.ts",
   "scripts": {
-    "build": "vite build"
+    "build": "vite build",
+    "build:watch":"vite build --watch"
   },
   "repository": {
     "type": "git",
