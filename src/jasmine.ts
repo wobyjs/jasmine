@@ -9,8 +9,8 @@ export function renderHook<R>(fn: (...args: any) => R) {
     let dispose = render(Test as any, test2)
     return {
         result: { get current(): R { return fnReturn } },
-        rerender: function () {
-            dispose = render(Test as any, test2)
+        rerender: function (newTest: any) {
+            dispose = render(newTest ?? Test as any, test2)
         },
         unmount: function () {
             dispose()
@@ -109,5 +109,31 @@ export const fireEvent = {
     mouseLeave: <T extends HTMLElement>(e: T) => {
         e.dispatchEvent(new MouseEvent('mouseleave'));
     },
-
+    dragEnter: <T extends HTMLElement>(e: T) => {
+        e.dispatchEvent(new DragEvent('dragenter'));
+        e.className = "over"
+    },
+    dragLeave: <T extends HTMLElement>(e: T) => {
+        e.dispatchEvent(new DragEvent('dragleave'));
+        e.classList.remove("over")
+    },
+    dragOver: <T extends HTMLElement>(e: T) => {
+        e.dispatchEvent(new DragEvent('dragover'));
+        e.className = "over"
+    },
+    drop: <T extends HTMLElement>(e: T) => {
+        e.dispatchEvent(new DragEvent('drop'));
+        e.classList.remove("over")
+    },
+    type: <T extends HTMLElement>(e: T, value:string) => {
+        e.dispatchEvent(new InputEvent('input',{inputType:"insertText", data:value}));
+    }
 }
+
+export function downloadJSON(content :any , fileName:string, contentType: any) {
+    var a = document.createElement("a");
+    var file = new Blob([content], { type: contentType });
+    a.href = URL.createObjectURL(file);
+    a.download = fileName;
+    a.click();
+  }
