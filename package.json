@@ -1,35 +1,35 @@
 {
-  "name": "voby-jasmine",
-  "version": "1.0.0",
-  "description": "jasmine browser testing for voby",
-  "main": "./dist/jasmine.es.js",
-  "module": "./dist/jasmine.es.js",
-  "types": "./dist/types/jasmine.d.ts",
-  "scripts": {
-    "build": "vite build",
-    "build:watch":"vite build --watch"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/sl1241/voby-jasmine"
-  },
-  "keywords": [
-    "jasmine",
-    "mock",
-    "voby"
-  ],
-  "author": "Tan Jee Han",
-  "license": "MIT",
-  "devDependencies": {
-    "@rollup/plugin-alias": "^5.0.0",
-    "jasmine": "^5.0.1",
-    "vite": "^4.3.3",
-    "vite-plugin-dts": "^2.3.0"
-  },
-  "peerDependencies": {
-    "voby": "workspace:../woby"
-  },
-  "dependencies": {
-    "@types/jasmine": "^4.3.2"
-  }
+    "name": "woby-jasmine",
+    "version": "1.0.1",
+    "description": "jasmine browser testing for voby",
+    "main": "./dist/jasmine.es.js",
+    "module": "./dist/jasmine.es.js",
+    "types": "./dist/types/jasmine.d.ts",
+    "scripts": {
+        "build": "vite build",
+        "build:watch": "vite build --watch"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/sl1241/woby-jasmine"
+    },
+    "keywords": [
+        "jasmine",
+        "mock",
+        "woby"
+    ],
+    "author": "Tan Jee Han",
+    "license": "MIT",
+    "devDependencies": {
+        "@rollup/plugin-alias": "^5.0.1",
+        "jasmine": "^5.1.0",
+        "vite": "^4.4.11",
+        "vite-plugin-dts": "^2.3.0"
+    },
+    "peerDependencies": {
+        "woby": "workspace:^"
+    },
+    "dependencies": {
+        "@types/jasmine": "^4.6.0"
+    }
 }

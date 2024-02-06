@@ -7,18 +7,18 @@ const config = defineConfig({
         minify: false,
         lib: {
             entry: ["./src/jasmine.ts"],
-            name: "voby-jasmine",
+            name: "woby-jasmine",
             formats: ['es', 'cjs', 'umd'],
             fileName: (format: string, entryName: string) => `${entryName}.${format}.js`
         },
         sourcemap: true,
         rollupOptions: {
-            external: ['react', 'react-dom', 'voby', 'oby', "react/jsx-runtime", "react-dom/client"],
+            external: ['react', 'react-dom', 'woby', 'woby/jsx-runtime', 'oby', "react/jsx-runtime", "react-dom/client"],
             output: {
                 globals: {
                     'react': 'React',
                     'react-dom': 'ReactDOM',
-                    'voby': 'voby',
+                    'woby': 'woby',
                     'oby': 'oby',
                     "react/jsx-runtime": "jsxRuntime",
                     "react-dom/client": "client"

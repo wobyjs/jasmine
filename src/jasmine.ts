@@ -1,4 +1,4 @@
-import { render } from "voby"
+import { render } from 'woby'
 
 const test2 = document.createElement("div")
 export function renderHook<R>(fn: (...args: any) => R) {
@@ -101,39 +101,39 @@ export const fireEvent = {
         e.dispatchEvent(new MouseEvent('click'))
     },
     keyDown: <T extends HTMLElement>(e: T) => {
-        e.dispatchEvent(new KeyboardEvent('keydown', { 'key': 'a' }));
+        e.dispatchEvent(new KeyboardEvent('keydown', { 'key': 'a' }))
     },
     mouseEnter: <T extends HTMLElement>(e: T) => {
-        e.dispatchEvent(new MouseEvent('mouseenter'));
+        e.dispatchEvent(new MouseEvent('mouseenter'))
     },
     mouseLeave: <T extends HTMLElement>(e: T) => {
-        e.dispatchEvent(new MouseEvent('mouseleave'));
+        e.dispatchEvent(new MouseEvent('mouseleave'))
     },
     dragEnter: <T extends HTMLElement>(e: T) => {
-        e.dispatchEvent(new DragEvent('dragenter'));
+        e.dispatchEvent(new DragEvent('dragenter'))
         e.className = "over"
     },
     dragLeave: <T extends HTMLElement>(e: T) => {
-        e.dispatchEvent(new DragEvent('dragleave'));
+        e.dispatchEvent(new DragEvent('dragleave'))
         e.classList.remove("over")
     },
     dragOver: <T extends HTMLElement>(e: T) => {
-        e.dispatchEvent(new DragEvent('dragover'));
+        e.dispatchEvent(new DragEvent('dragover'))
         e.className = "over"
     },
     drop: <T extends HTMLElement>(e: T) => {
-        e.dispatchEvent(new DragEvent('drop'));
+        e.dispatchEvent(new DragEvent('drop'))
         e.classList.remove("over")
     },
-    type: <T extends HTMLElement>(e: T, value:string) => {
-        e.dispatchEvent(new InputEvent('input',{inputType:"insertText", data:value}));
+    type: <T extends HTMLElement>(e: T, value: string) => {
+        e.dispatchEvent(new InputEvent('input', { inputType: "insertText", data: value }))
     }
 }
 
-export function downloadJSON(content :any , fileName:string, contentType: any) {
-    var a = document.createElement("a");
-    var file = new Blob([content], { type: contentType });
-    a.href = URL.createObjectURL(file);
-    a.download = fileName;
-    a.click();
-  }
+export function downloadJSON(content: any, fileName: string, contentType: any) {
+    var a = document.createElement("a")
+    var file = new Blob([content], { type: contentType })
+    a.href = URL.createObjectURL(file)
+    a.download = fileName
+    a.click()
+}
