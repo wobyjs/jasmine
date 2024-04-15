@@ -6,7 +6,9 @@
     "module": "./dist/jasmine.es.js",
     "types": "./dist/types/jasmine.d.ts",
     "scripts": {
-        "build": "vite build",
+        "release": "git add . && git commit -m \"Bump version\" && git push && pnpm version patch",
+        "declaration": "tsc --build --force --declaration --emitDeclarationOnly --declarationMap  --verbose",
+        "build": "vite build && tsc --declaration --emitDeclarationOnly --declarationMap",
         "build:watch": "vite build --watch"
     },
     "repository": {
@@ -23,13 +25,13 @@
     "devDependencies": {
         "@rollup/plugin-alias": "^5.0.1",
         "jasmine": "^5.1.0",
-        "vite": "^4.4.11",
-        "vite-plugin-dts": "^2.3.0"
+        "vite": "^5.2.8"
     },
     "peerDependencies": {
-        "woby": "workspace:^"
+        "woby": "workspace:../woby"
     },
     "dependencies": {
-        "@types/jasmine": "^4.6.0"
+        "@types/jasmine": "^5.1.4",
+        "typescript": "5.4.4"
     }
 }

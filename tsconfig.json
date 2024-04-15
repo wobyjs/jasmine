@@ -6,6 +6,7 @@
         "allowUnusedLabels": false,
         "alwaysStrict": true,
         "declaration": true,
+        "declarationDir": "./dist/types",
         "disableSizeLimit": true,
         "esModuleInterop": false,
         "forceConsistentCasingInFileNames": true,
@@ -44,7 +45,7 @@
         "noImplicitAny": true,
         "noUncheckedIndexedAccess": false,
         "baseUrl": ".",
-        "rootDir": "./",
+        "rootDir": "./src",
         "composite": true,
         "paths": {
             "woby/jsx-runtime": [
@@ -63,7 +64,7 @@
     "exclude": [
         "node_modules/*",
         "*.test.ts*",
-        "vite.config.ts",
+        "vite.*.*ts",
         "vite.config.*.ts",
     ]
     // "include": [

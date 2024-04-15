@@ -1,6 +1,6 @@
 import { defineConfig } from 'vite'
 import path from 'path'
-import dts from 'vite-plugin-dts'
+// import dts from 'vite-plugin-dts'
 
 const config = defineConfig({
     build: {
@@ -8,7 +8,7 @@ const config = defineConfig({
         lib: {
             entry: ["./src/jasmine.ts"],
             name: "woby-jasmine",
-            formats: ['es', 'cjs', 'umd'],
+            formats: ['es', 'cjs'/*, 'umd'*/],
             fileName: (format: string, entryName: string) => `${entryName}.${format}.js`
         },
         sourcemap: true,
@@ -30,7 +30,7 @@ const config = defineConfig({
         jsx: 'automatic',
     },
     plugins: [
-        dts({ entryRoot: './src', outputDir: './dist/types', exclude: './nodes_modules' })
+        // dts({ entryRoot: './src', outputDir: './dist/types', exclude: './nodes_modules' })
     ],
     resolve: {
         alias: {
