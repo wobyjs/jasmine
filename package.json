@@ -6,7 +6,10 @@
     "module": "./dist/jasmine.es.js",
     "types": "./dist/types/jasmine.d.ts",
     "scripts": {
-        "release": "git add . && git commit -m \"Bump version\" && git push && pnpm version patch",
+        "git": "git add . && git commit -m \"Bump version\" && git push",
+        "bump": "pnpm version patch",
+        "npmjs": "pnpm publish",
+        "release": "run-s -c git bump npmjs",
         "declaration": "tsc --build --force --declaration --emitDeclarationOnly --declarationMap  --verbose",
         "build": "vite build && tsc --declaration --emitDeclarationOnly --declarationMap",
         "build:watch": "vite build --watch"
@@ -32,6 +35,6 @@
     },
     "dependencies": {
         "@types/jasmine": "^5.1.4",
-        "typescript": "5.4.4"
+        "typescript": "5.4.5"
     }
 }
