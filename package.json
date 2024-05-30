@@ -34,7 +34,6 @@
         "woby": "workspace:../woby"
     },
     "dependencies": {
-        "@types/jasmine": "^5.1.4",
-        "typescript": "5.4.5"
+        "@types/jasmine": "^5.1.4"
     }
 }
