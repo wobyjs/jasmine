@@ -1,6 +1,6 @@
 {
     "name": "woby-jasmine",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "description": "jasmine browser testing for voby",
     "main": "./dist/jasmine.es.js",
     "module": "./dist/jasmine.es.js",
