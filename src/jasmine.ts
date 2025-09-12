@@ -1,3 +1,4 @@
+import { callStack } from 'woby'
 import { render } from 'woby'
 
 const test2 = document.createElement("div")
@@ -13,7 +14,7 @@ export function renderHook<R>(fn: (...args: any) => R) {
             dispose = render(newTest ?? Test as any, test2)
         },
         unmount: function () {
-            dispose()
+            dispose(callStack())
 
         }
     }

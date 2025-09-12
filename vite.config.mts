@@ -7,7 +7,7 @@ const config = defineConfig({
         minify: false,
         lib: {
             entry: ["./src/jasmine.ts"],
-            name: "woby-jasmine",
+            name: "@woby/jasmine",
             formats: ['es', 'cjs'/*, 'umd'*/],
             fileName: (format: string, entryName: string) => `${entryName}.${format}.js`
         },
